@@ -1,0 +1,33 @@
+Lecture 1:
+
+Parts of AI Agents:
+1. LLM: The reasoning behind our AI agent 
+2. Memory: It can be long term or short term 
+3. Tools: Different services accessed by different APIs
+
+
+Lecture 2:
+Agentic Frameworks
+1. Azure AI agent service: currently designed to be used for single agent both through code and UI 
+2. Semantic kernel: Enterprise focused framework 
+3. AutoGen: Strong focus on taking the altest agentic research and enabling other researchers and developers to test and experiment with those ideas in code. 
+
+Lecture 3:
+What makes a good AI agent?
+1. Space: The environment the agent is working in , should focus on connecting events, people and knowledge. An agent should be easily discoverable while being able to 
+transition from being in the foreground and background based on the user's needs. 
+
+2. Time: How agent operates over time with user. This is imp because agents can improve over time if we design them well enough
+
+3. Core: This principle is abot embracing uncertainity. Since we are allowing LLMs to create plans and actions on those plans, unceratininty is a key part of agentic design 
+
+
+Lecture 4:
+Use of Tool:
+Tasks requested by users sometimes needs external tool sto complete. And the tool design pattern allow LLMs to interact with tools like calculator, FLight API, Function
+
+Lecture 5:
+Agentic RAG:
+RAG enables LLMs to take a query made from a user and retrieve relevant infromation from the database. That info is then added to the context given to the LLM to provide more relevant responses, 
+
+1. To start on the QUERY side the agent performs an analysis of the query to create a plan of smaller tasks to use the data sources and tools it'll need to answer that query. 
