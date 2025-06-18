@@ -7,6 +7,7 @@ Parts of AI Agents:
 
 
 Lecture 2:
+
 Agentic Frameworks
 1. Azure AI agent service: currently designed to be used for single agent both through code and UI 
 2. Semantic kernel: Enterprise focused framework 
