@@ -32,3 +32,11 @@ Agentic RAG:
 RAG enables LLMs to take a query made from a user and retrieve relevant infromation from the database. That info is then added to the context given to the LLM to provide more relevant responses, 
 
 1. To start on the QUERY side the agent performs an analysis of the query to create a plan of smaller tasks to use the data sources and tools it'll need to answer that query. 
+
+Lecture 6:
+System Message Framework
+- A place where creators of AI agents can have the most control and impact when working with AI agents
+- we want to set clear instructions so that the AI agent performs the actions we want it to. One way to build effective prompts is in a scalable and repeatable way is
+using a system message framework
+- This starts by creating a system message for generating system messages for other AI agents.
+- Building prompts is an iterative process and the system message framework allows you to iterate better by making tweaks to the template generating system messages over time to improve across all your agents.
