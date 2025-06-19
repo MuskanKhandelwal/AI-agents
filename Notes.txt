@@ -40,3 +40,22 @@ System Message Framework
 using a system message framework
 - This starts by creating a system message for generating system messages for other AI agents.
 - Building prompts is an iterative process and the system message framework allows you to iterate better by making tweaks to the template generating system messages over time to improve across all your agents.
+
+Lecture 7:
+Planning design pattern:
+- Breaking down complex tasks into manageable subtasks that can be handled efficiently. This approach allows AI agents to create structured plans, facilitating task completion either by a single agent or multiple specialized agents working collaboratively. 
+- The planning design pattern improves the process by enabling each subtask to be assigned to specific agents, validated structurally using tools like Pydantic, and passed downstream for execution or further processing.
+- Multi agents handle subtasks simultaneously. Coordination between agents improves overall task execution.
+- Data validation via tools like Pydantic ensures structured and reliable agent outputs.
+- Structured plans enable downstream processes or agents to handle subtasks seamlessly.
+
+Lecture 8:
+Multi Agent system:
+Different Patterns:
+1. Group Chat: when we want to create a group chat application where multiple agents can communicate with each other
+eg team collaboration, customer support, and social networking
+2. Handoff: Application where multiple agents wants to hand off tasks to each other. 
+eg customer support, task management, and workflow automation
+3. Collaborative Filtering: Create an application where multiple agents can collaborate to make recommendations to users
+
+
