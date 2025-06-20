@@ -50,12 +50,20 @@ Planning design pattern:
 - Structured plans enable downstream processes or agents to handle subtasks seamlessly.
 
 Lecture 8:
-Multi Agent system:
+Multi Agent system
 Different Patterns:
-1. Group Chat: when we want to create a group chat application where multiple agents can communicate with each other
+1. Group Chat: When we want to create a group chat application where multiple agents can communicate with each other
 eg team collaboration, customer support, and social networking
 2. Handoff: Application where multiple agents wants to hand off tasks to each other. 
 eg customer support, task management, and workflow automation
 3. Collaborative Filtering: Create an application where multiple agents can collaborate to make recommendations to users
 
+Lecture 9:
+Metacognition: Thinking about thinking 
+- AI agents can use data and analysis to identify errors and make improvements in its plannings and responses, which enables improvements over time
 
+Lecture 10
+Deploying AI Agents:
+To evaluate AI agents we need to look at entire system that AI agents operates in and setup evaluation points at each step 
+- Agents ability to identify the intent of the user 
+- Agents ability to identify the right tools 
