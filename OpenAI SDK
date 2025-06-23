@@ -1,0 +1,10 @@
+Open AI SDK provides a framework for creatig AI agents that can perform tasks autonomously.
+- Agents, which are LLMs equipped with instructions and tools
+- Tools, External functions or APIs that agents can call
+- Handoffs, which allow agents to delegate to other agents for specific tasks
+
+- Guardrails, which enable the inputs to agents to be validate
+Input Guardrails: Validate user inputs before processing.
+Output Guardrails: Check the agent's responses before delivering them to the user.
+
+SDK comes with built-in tracing that lets you visualize and debug your agentic flows, as well as evaluate them and even fine-tune models for your application
