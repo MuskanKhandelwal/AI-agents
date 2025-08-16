@@ -1,0 +1,116 @@
+The LangChain ecosystem:
+The place where it all began, have been around for a long time 
+
+Langraph:
+Langraph is essentially built on top of LangChain. It uses LangChain's core building blocks (like chains, tools, memory, agents) and allows developers to compose and manage 
+them visually using a graph editor.
+- Langraph
+- Langraph Studio
+- Langraph Platform 
+
+
+In LangGraph
+
+* Agent workflows are represented as GRAPHS
+* State represents the current snapshot of the application. It is represented by an Annotation object.
+* Nodes are python functions that represent agent logic. They receive the current state as input, do something and return the updated State. 
+* Edges are also python functions that determine which Node to execute next based on the State. They can be conditional or Fixed. 
+
+NODES DO THE WORK
+EDGES CHOOSE WHAT TO DO NEXT. 
+https://www.anthropic.com/engineering/building-effective-agents
+
+
+
+
+Annotations in LangGraph:
+Why annotations matter:
+
+1. They tell the system what each part of the State means.
+2. They can enforce rules — like “this value must be text” or “this should always be a number.”
+3. They make it easier for nodes to understand and use the State without guessing.
+
+from typing import Annotated
+my_favorite_things: Annotated[List, "these are a few of mine"]
+
+What happens without Annotated
+If you skip it:
+
+class State(BaseModel):
+    messages: list
+
+LangGraph will still work — it’s just a normal Pydantic model field now. But when multiple nodes update messages, the last write wins (the old value gets overwritten).
+You won’t get the automatic merging behavior that add_messages gives you.
+
+
+
+
+
+BASEMODEL:
+class State(BaseModel):
+    messages: Annotated[list, add_messages]
+the BaseModel part is coming from Pydantic, a Python library that helps you define data structures with validation built-in.
+
+What BaseModel does in plain terms
+
+Think of BaseModel like a smart form in a web app: You tell it what fields you expect (like messages) You tell it what types those fields should be (like list)
+Whenever you create or update this object, it automatically checks the values to make sure they match your rules
+
+If the data is wrong, it throws an error — instead of letting bad data sneak in and break your program later.
+
+Why LangGraph uses it?
+
+LangGraph needs to pass around a State object that is: Well-defined (you know exactly what’s inside), Safe (no wrong data types), Easy to work with (you can access fields like state.messages instead of state["messages"])
+BaseModel from Pydantic gives you all that for free.
+
+
+Annotated[list, add_messages] = A list that knows how to grow without losing previous items when multiple nodes add to it.
+
+
+
+Five steps to the first graph
+1. Define the State class.
+2. Start the Graph builder.
+3. Create a Node
+4. Create Edges
+5. Compile the Graph 
+
+SUPER STEP
+In LangGraph, a super step is a key concept that refers to one full round of execution across the graph — it's how LangGraph processes your state through all active nodes.
+
+Think of it Like This:
+* Each node is a function or operation.
+* The graph starts at the START node with some initial state (a dictionary-like object).
+* During a super step:
+  - Each node that is "active" receives the current state.
+  - It performs its logic (e.g., calling an LLM, invoking a tool).
+  - It returns a new state and possibly a signal about where to go next.
+  - LangGraph then uses the returned state to decide which nodes to activate next.
+
+When Would You Use Multiple Super Steps?
+1. Dynamic workflows where the next node(s) to run depend on previous output.
+2. Loops (e.g. the graph may revisit a node several times based on a condition).
+3. Agent decision-making, where the graph might call tools iteratively.
+
+
+
+
+MODEL CONTEXT PROTOCOL 
+
+A standard way for AI assistants to plug into outside tools, data, and systems without each developer having to reinvent the wheel.
+
+The key ideas in MCP
+
+1. Standard protocol
+Everyone agrees on the same rules for how to send requests and get responses.
+
+2. Server-client model
+The tool side (MCP server) says: “Here’s what I can do.”
+The AI side (MCP client) says: “Cool, I want you to do X with these inputs.”
+
+3. Schema / descriptions
+The tool describes what functions exist, what they need, and what they return, so the AI can plan how to use them.
+
+4. Model-agnostic
+It’s not tied to OpenAI, Anthropic, etc. Any AI that speaks MCP can talk to any MCP-enabled tool.
+
