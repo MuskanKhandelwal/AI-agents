@@ -114,3 +114,13 @@ The tool describes what functions exist, what they need, and what they return, s
 4. Model-agnostic
 It’s not tied to OpenAI, Anthropic, etc. Any AI that speaks MCP can talk to any MCP-enabled tool.
 
+
+
+
+
+MCP Client: Built into the AI — knows the protocol to ask for tools and run them.
+
+MCP Server: Lives inside the tool (Playwright here) — listens for requests and executes them.
+
+Standard language: Both sides agree on message format, so any AI can use any tool that speaks MCP.
+
